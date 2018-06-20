@@ -1,0 +1,26 @@
+.flex-container {
+  padding: 30rpx;
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-icon {
+  margin-top: 400rpx;
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.empty-text {
+  margin-top: 24rpx;
+  font-size: 32rpx;
+  color: #98989c;
+}

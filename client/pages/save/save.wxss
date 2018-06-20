@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.preview {
+  position: absolute;
+  top: 65rpx;
+  width: 520rpx;
+  height: 771rpx;
+  border-radius: 12rpx;
+  box-shadow: 2rpx 2rpx 18rpx #5b5a5b;
+}
+
+.signature {
+  position: absolute;
+  top: 855rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #98989c;
+}
+
+.qr-code {
+  position: absolute;
+  top: 915rpx;
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.preview_canvas {
+  position: absolute;
+  top: 2000px;
+  width: 750px;
+  height: 1112px;
+}
+
+.save-to-album {
+  position: absolute;
+  bottom: 50rpx;
+  text-align: center;
+}

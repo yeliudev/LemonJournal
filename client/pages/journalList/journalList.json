@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "journal": "/components/journal/journal"
+  }
+}

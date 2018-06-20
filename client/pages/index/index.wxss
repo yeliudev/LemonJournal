@@ -1,0 +1,204 @@
+.flex-container {
+  background-color: #fff;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatar-container {
+  width: 113rpx;
+  height: 113rpx;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-bottom: 10rpx;
+}
+
+.username {
+  font-size: 36rpx;
+  color: #808085;
+}
+
+.journalBooks {
+  height: 840rpx;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.journalBook {
+  height: 100vh;
+  width: 50vh;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  padding: 15rpx 45rpx;
+}
+
+.front {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15rpx 45rpx;
+  width: 514rpx;
+  height: 750rpx;
+  background-color: #f3f3f3;
+  background-size: 100%;
+  overflow: hidden;
+  border-radius: 20rpx 50rpx 50rpx 20rpx;
+  box-shadow: 2rpx 4rpx 24rpx #686868;
+  z-index: 2;
+}
+
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 15rpx 45rpx;
+  width: 514rpx;
+  height: 750rpx;
+  background-size: 100%;
+  overflow: hidden;
+  border-radius: 20rpx;
+  box-shadow: 2rpx 2rpx 16rpx #686868;
+  transform: rotateY(180deg);
+}
+
+.add-journalBook-icon {
+  width: 84rpx;
+  height: 84rpx;
+  margin: 274rpx 0 38rpx;
+}
+
+.add-journalBook-text {
+  font-size: 30rpx;
+  color: #a0a0a0;
+}
+
+.input-title {
+  position: relative;
+  right: -22rpx;
+  bottom: -38rpx;
+  color: #808085;
+  font-size: 26rpx;
+}
+
+.input {
+  margin-top: 52rpx;
+  padding: 0 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #f5f5f5;
+  font-size: 30rpx;
+  color: #6c6c6c;
+}
+
+.background-title {
+  position: relative;
+  right: -22rpx;
+  bottom: -17rpx;
+  color: #808085;
+  font-size: 26rpx;
+  margin-top: 8rpx;
+  margin-bottom: 23rpx;
+}
+
+.book-cover-flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 15rpx;
+}
+
+.book-cover-container {
+  margin: 15rpx 8rpx;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 2rpx 2rpx 4rpx #808085;
+}
+
+.book-cover {
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.return-button-container {
+  background-color: #58a9e3;
+  height: 210rpx;
+  width: 210rpx;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -105rpx;
+  left: -105rpx;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+}
+
+.return-button-container:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 40rpx #58a9e3;
+}
+
+.return-button {
+  position: absolute;
+  top: 38rpx;
+  right: 43rpx;
+  height: 37rpx;
+  width: 37rpx;
+}
+
+.submit-button-container {
+  background-color: #5ebb54;
+  height: 208rpx;
+  width: 208rpx;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -104rpx;
+  right: -104rpx;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+}
+
+.submit-button-container:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 40rpx #5ebb54;
+}
+
+.submit-button {
+  position: absolute;
+  top: 38rpx;
+  left: 39rpx;
+  height: 46rpx;
+  width: 46rpx;
+}
+
+.add-button {
+  height: 110rpx;
+  width: 110rpx;
+  border-radius: 100%;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+  margin-bottom: 50rpx;
+}
+
+.add-button:active {
+  transform: scale(0.88);
+  box-shadow: 0 4rpx 40rpx #59c8b1;
+}
+
+.authorize-button {
+  margin-bottom: 55rpx;
+}

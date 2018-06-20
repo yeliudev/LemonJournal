@@ -1,0 +1,34 @@
+<view class='journalBook-container'>
+  <view class='flipper' style='{{ style }}'>
+    <view class='front' style='background-image:url("{{ bookCoverUrl + background_id + ".1.jpg" }}");' bindtap='onBookTap'>
+      <view class='shade'>
+        <view class='book-info'>
+          <text class='name'>{{ name }}</text>
+          <text class='summary'>共 {{ count }} 篇</text>
+        </view>
+        <view class='settings-container' catchtap='onSettingsTap'>
+          <image class='settings' src='/assets/settings.png' />
+        </view>
+      </view>
+    </view>
+    <view class='back'>
+      <view class='input-title'>手帐本名称：</view>
+      <input class='input' cursor-spacing='150' maxlength='10' placeholder='{{ name }}' value='{{ newName }}' bindblur='onBlur' />
+      <view class='background-title'>封面图片：</view>
+      <view class='flex-container'>
+        <view class='book-cover-container' style='{{ item }}' wx:key='id' wx:for='{{ bookCovers }}'>
+          <image class='book-cover' id='{{ index + 1 }}' src='{{ bookCoverUrl + (index + 1) + ".0.jpg" }}' bindtap='onBookCoverTap' />
+        </view>
+      </view>
+      <view class='remove-button-container' bindtap='onRemoveButtonTap'>
+        <image class='remove-button' src='/assets/remove.png' />
+      </view>
+      <view class='return-button-container' bindtap='onReturnButtonTap'>
+        <image class='return-button' src='/assets/return.png' />
+      </view>
+      <view class='submit-button-container' bindtap='onSubmitButtonTap'>
+        <image class='submit-button' src='/assets/submit.png' />
+      </view>
+    </view>
+  </view>
+</view>

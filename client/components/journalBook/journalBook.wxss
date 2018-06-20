@@ -1,0 +1,205 @@
+.journalBook-container {
+  padding: 15rpx 45rpx;
+}
+
+.flipper {
+  transition: 0.6s;
+  transform-style: preserve-3d;
+}
+
+.front {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 514rpx;
+  height: 750rpx;
+  background-size: 100%;
+  overflow: hidden;
+  border-radius: 20rpx 50rpx 50rpx 20rpx;
+  box-shadow: 2rpx 4rpx 24rpx #686868;
+  z-index: 2;
+}
+
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 514rpx;
+  height: 750rpx;
+  background-size: 100%;
+  overflow: hidden;
+  border-radius: 20rpx;
+  box-shadow: 2rpx 2rpx 16rpx #686868;
+  transform: rotateY(180deg);
+}
+
+.shade {
+  background-color: #fff;
+  background-size: 100%;
+  height: 280rpx;
+  margin: 550rpx 0 0;
+}
+
+.book-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: -52rpx;
+  bottom: -38rpx;
+}
+
+.name {
+  font-size: 38rpx;
+  color: #4e4e4f;
+}
+
+.summary {
+  font-size: 28rpx;
+  color: #98989c;
+}
+
+.settings-container {
+  position: relative;
+  right: -418rpx;
+  bottom: -6rpx;
+  height: 100rpx;
+  width: 100rpx;
+  transition: transform ease-in 0.08s;
+}
+
+.settings {
+  position: relative;
+  right: -30rpx;
+  bottom: -30rpx;
+  height: 38rpx;
+  width: 38rpx;
+}
+
+.settings:active {
+  transform: scale(0.85);
+}
+
+.input-title {
+  position: relative;
+  right: -22rpx;
+  bottom: -38rpx;
+  color: #808085;
+  font-size: 26rpx;
+}
+
+.input {
+  margin-top: 52rpx;
+  padding: 0 20rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background-color: #f5f5f5;
+  font-size: 30rpx;
+  color: #6c6c6c;
+}
+
+.background-title {
+  position: relative;
+  right: -22rpx;
+  bottom: -17rpx;
+  color: #808085;
+  font-size: 26rpx;
+  margin-top: 8rpx;
+  margin-bottom: 23rpx;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 0 15rpx;
+}
+
+.book-cover-container {
+  margin: 15rpx 8rpx;
+  height: 100rpx;
+  width: 100rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 2rpx 2rpx 4rpx #808085;
+}
+
+.book-cover {
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+}
+
+.remove-button-container {
+  background-color: #f16467;
+  height: 130rpx;
+  width: 130rpx;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -45rpx;
+  left: 194rpx;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+}
+
+.remove-button-container:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 40rpx #f16467;
+}
+
+.remove-button {
+  position: absolute;
+  top: 28rpx;
+  right: 46rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.return-button-container {
+  background-color: #58a9e3;
+  height: 210rpx;
+  width: 210rpx;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -105rpx;
+  left: -105rpx;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+}
+
+.return-button-container:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 40rpx #58a9e3;
+}
+
+.return-button {
+  position: absolute;
+  top: 38rpx;
+  right: 43rpx;
+  height: 37rpx;
+  width: 37rpx;
+}
+
+.submit-button-container {
+  background-color: #5ebb54;
+  height: 208rpx;
+  width: 208rpx;
+  border-radius: 100%;
+  position: absolute;
+  bottom: -104rpx;
+  right: -104rpx;
+  transition: transform ease-in 0.08s, box-shadow ease-in 0.05s;
+}
+
+.submit-button-container:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 40rpx #5ebb54;
+}
+
+.submit-button {
+  position: absolute;
+  top: 38rpx;
+  left: 39rpx;
+  height: 46rpx;
+  width: 46rpx;
+}

@@ -1,0 +1,15 @@
+.sticker, .text {
+  position: absolute;
+  display: inline-block;
+  width: 200rpx;
+  height: 200rpx;
+  font-size: 28rpx;
+  word-break: break-all;
+  overflow: hidden;
+}
+
+.remove, .handle {
+  position: absolute;
+  width: 40rpx;
+  height: 40rpx;
+}

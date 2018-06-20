@@ -1,0 +1,7 @@
+<view class='flex-container' wx:if='{{ journals.length > 0 }}'>
+  <journal journal_id='{{ item.journal_id }}' title='{{ item.title }}' date='{{ item.last_update_time }}' previewImageUrl='{{ item.previewUrl }}' bindrefreshJournalList="onRefreshJournalList" wx:key='id' wx:for='{{ journals }}' />
+</view>
+<view class='empty' wx:if='{{ journals.length === 0 }}'>
+  <image class='empty-icon' src='/assets/empty.png' />
+  <text class='empty-text'>手帐本空空如也</text>
+</view>

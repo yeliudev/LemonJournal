@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/journalList/journalList",
+    "pages/edit/edit",
+    "pages/save/save"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "柠檬手帐",
+    "navigationBarTextStyle": "black"
+  }
+}

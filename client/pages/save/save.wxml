@@ -1,0 +1,9 @@
+<view class='container'>
+  <image class='preview' src='{{ previewImagePath }}' />
+  <view class='signature'>Designed by
+    <open-data type='userNickName' />
+  </view>
+  <image class='qr-code' src='/assets/QR.jpg' />
+  <canvas class="preview_canvas" canvas-id="preview_canvas" />
+  <button class='save-to-album' type='primary' bindtap='onSaveJournal'>保存到相册</button>
+</view>

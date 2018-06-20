@@ -1,0 +1,52 @@
+<view class='editor-container'>
+  <inputBox title='请输入文字' multiline='true' bindinputCancel='onInputCancel' bindinputConfirm='onInputConfirm' wx:if='{{ addingText }}' />
+  <view class='journal-container' style='height:{{ containerHeight }}rpx;' bindtap='onRefreshView'>
+    <view class='journal' style='Bottom:-{{ windowBottom }}rpx;'>
+      <image class='background' src='{{ backgroundPath }}' />
+      <sticker id='{{ item.id }}' component_type='{{ item.component_type }}' selected='{{ selected }}' hidden='{{ hidden }}' border='{{ border }}' image_url='{{ item.image_url }}' text='{{ item.text }}' stickerCenterX='{{ item.stickerCenterX }}' stickerCenterY='{{ item.stickerCenterY }}'
+        scale='{{ item.scale }}' rotate='{{ item.rotate }}' z_index='{{ item.z_index }}' max_z_index='{{ max_z_index }}' bindrefreshData='onRefreshData' bindrefreshView='onRefreshView' bindremoveSticker='onRemoveComponent' bindupdateMax_z_index='onUpdateMax_z_index'
+        wx:key='{{ item.id }}' wx:for='{{ assemblies }}' />
+    </view>
+  </view>
+  <view class='tab-bar'>
+    <view class='selector' bindtap='onBackgroundTabTap'>
+      <image class='tab-bar-icon' src='/assets/background.png' />
+      <text class='tab-bar-title'>背景</text>
+    </view>
+    <view class='selector' bindtap='onStickerTabTap'>
+      <image class='tab-bar-icon' src='/assets/sticker.png' />
+      <text class='tab-bar-title'>贴纸</text>
+    </view>
+    <view class='selector' bindtap='onTextTabTap'>
+      <image class='tab-bar-icon' src='/assets/text.png' />
+      <text class='tab-bar-title'>文字</text>
+    </view>
+    <view class='selector' bindtap='onImageTabTap'>
+      <image class='tab-bar-icon' src='/assets/image.png' />
+      <text class='tab-bar-title'>图片</text>
+    </view>
+  </view>
+  <picker bindchange='onJournalBookSelected' range='{{ bookList }}' range-key='name' value='{{ currentPickerIndex }}'>
+    <view class='submit'>
+      <text class='submit-text'>完成</text>
+      <image class='forward' src='/assets/forward.png' />
+    </view>
+  </picker>
+  <view class='background-rich-tab-bar' style='animation:{{ backgroundAnimation }}  0.3s;bottom:{{ backgroundBottom }};' wx:if='{{ backgroundRichTabBarDidOpen }}'>
+    <scroll-view class='background-scroll-view' scroll-x bindtap='onBackgroundTap'>
+      <image class='background-icon' id='{{ index + 1 }}' src='{{ backgroundUrl + (index + 1) + ".png" }}' wx:key='id' wx:for='{{ allBackground }}' />
+    </scroll-view>
+  </view>
+  <view class='sticker-rich-tab-bar' style='animation:{{ stickerAnimation }} 0.3s;bottom:{{ stickerBottom }};' wx:if='{{ stickerRichTabBarDidOpen }}'>
+    <scroll-view class='sticker-type-scroll-view' scroll-x bindtap='onStickerTypeTap'>
+      <view class='sticker-type' data-type='food' style='color:{{ stickerTypes[0].color }}'>食物</view>
+      <view class='sticker-type' data-type='travel' style='color:{{ stickerTypes[1].color }}'>旅行</view>
+      <view class='sticker-type' data-type='sport' style='color:{{ stickerTypes[2].color }}'>运动</view>
+      <view class='sticker-type' data-type='plant' style='color:{{ stickerTypes[3].color }}'>植物</view>
+      <view class='sticker-type' data-type='national_flag' style='color:{{ stickerTypes[4].color }}'>国旗</view>
+    </scroll-view>
+    <scroll-view class='sticker-scroll-view' scroll-x scroll-left='{{ currentScrollLeft }}' bindtap='onStickerTap'>
+      <image class='sticker' id='{{ index + 1 }}' src='{{ stickerUrl + currentStickerType + "/" + (index + 1) + ".png" }}' wx:key='id' wx:for='{{ currentStickers }}' />
+    </scroll-view>
+  </view>
+</view>
