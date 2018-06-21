@@ -9,7 +9,7 @@
 
 小程序中的模态输入框部分使用了自己封装的 [InputBox](https://github.com/goolhanrry/Weapp-Demo-Inputbox) 组件
 
-代码已移除 AppId 等敏感信息，可能导致登录报错，但不影响授权后本地使用，可自行添加 AppId 以进行真机调试
+代码已移除 AppId 等敏感信息，开发环境的后台已配置好，可在模拟器中正常登录或自行添加 AppId 后在调试模式下进行真机测试，若后台开发环境已被暂停导致无法登录，请联系作者微信：`aweawds` 重新上传代码
 
 ## 效果展示
 
@@ -37,7 +37,7 @@
 
 #### 组件的移动、旋转和缩放
 
-* 主要思路是把 `<image>` 标签（对应图片）和 `<text>` 标签（对应文字）封装在同一个自定义组件 `<sticker>` 中，通过对外暴露的 `text` 变量是否为空来进行条件渲染，然后绑定 `onTouchStart()` 、`onTouchEnd()` 和 `onTouchMove()` 三个事件来对整个组件的位置、角度、大小以及 “旋转” 和 “移除” 两个操作按钮的行为进行操作
+* 主要思路是把 `<image>` 标签（对应图片）和 `<text>` 标签（对应文字）封装在同一个自定义组件 `<sticker>` 中，通过对外暴露的 `text` 变量是否为空来进行条件渲染，然后绑定 `onTouchStart()` 、`onTouchEnd()` 和 `onTouchMove()` 三个事件来对整个组件的位置、角度、大小、层级以及 “旋转” 和 “移除” 两个按钮的行为进行操作
 
 ``` js
 onTouchStart: function (e) {
@@ -151,14 +151,14 @@ onTouchMove: function (e) {
 
 #### 编辑状态的保存
 
-* 一篇手帐中需要保存的组件类型包括 `sticker`（软件自带的贴纸）、`image`（用户上传的图片）和 `text`（自定义文字）三种，全部保存在一个如下格式的 json 对象中，每个独立组件都包含了一个不重复的 id 以及相关的信息，保存时由客户端生成该对象并编码成 json 字符串存储在数据库，恢复编辑状态时通过解析 json 字符串获得对象，再由编辑页面渲染
+* 一篇手帐包含的组件类型包括 `sticker`（软件自带的贴纸）、`image`（用户上传的图片）和 `text`（自定义文字）三种，全部保存在一个如下格式的 json 对象中，每个独立组件都包含了一个不重复的 id 以及相关的信息，保存时由客户端生成该对象并编码成 json 字符串存储在数据库，恢复编辑状态时通过解析 json 字符串获得对象，再由编辑页面渲染
 
 ``` js
 {
-    "backgroundId": "5",                                        背景图 id
+    "backgroundId": "5",                                        背景图id
     "assemblies": [
         {
-            "id": "jhjg",                                       组件 id
+            "id": "jhjg",                                       组件id
             "component_type": "image",                          组件类型（自定义图片）
             "image_url": "https://example.com/jhjg.png",        图片地址
             "stickerCenterX": 269,                              中心横坐标
@@ -182,7 +182,7 @@ onTouchMove: function (e) {
             "id": "chjn",
             "component_type": "sticker",                        组件类型（贴纸）
             "sticker_type": "food",                             贴纸类型
-            "sticker_id": "1",                                  贴纸 id
+            "sticker_id": "1",                                  贴纸id
             "image_url": "https://example.com/weapp/stickers/food/1.png",
             "stickerCenterX": 277,
             "stickerCenterY": 260,
