@@ -5,9 +5,9 @@
 ![Github All Releases](https://img.shields.io/github/downloads/goolhanrry/Weapp-Demo-LemonJournal/total.svg)
 [![GitHub repo size in bytes](https://img.shields.io/github/repo-size/goolhanrry/Weapp-Demo-LemonJournal.svg?colorB=fa5b19)](https://github.com/goolhanrry/Weapp-Demo-LemonJournal)
 
-参加比赛的作品，开发周期一个月，使用了 [Wafer2](https://github.com/tencentyun/wafer2-startup) 框架，后台采用腾讯云提供的 Node.js SDK 接入对象存储 API ，前端核心代码实现了类似于图片编辑器的功能，支持图片和文字的移动、旋转、缩放并生成预览图
+参加比赛的作品，开发周期一个月，使用了 [Wafer2](https://github.com/tencentyun/wafer2-startup) 框架，后台采用腾讯云提供的 Node.js SDK 接入对象存储 API ，前端核心代码实现了类似于图片编辑器的功能，支持图片和文字的移动、旋转、缩放并生成预览图，动画部分采用 CSS 动画实现
 
-小程序中的模态输入框部分采用了自己封装的 [InputBox](https://github.com/goolhanrry/Weapp-Demo-Inputbox) 组件
+小程序中的模态输入框部分使用了自己封装的 [InputBox](https://github.com/goolhanrry/Weapp-Demo-Inputbox) 组件
 
 代码已移除 AppId 等敏感信息，可能导致登录报错，但不影响授权后本地使用，可自行添加 AppId 以进行真机调试
 
