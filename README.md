@@ -9,7 +9,7 @@
 
 小程序中的模态输入框部分使用了自己封装的 [InputBox](https://github.com/goolhanrry/Weapp-Demo-Inputbox) 组件
 
-代码已移除 AppId 等敏感信息，开发环境的后台已配置好，可自行添加自己的 AppId 后在模拟器中正常登录或在调试模式下进行真机测试，若后台开发环境已被暂停导致无法登录，请联系作者微信：`aweawds` 重新上传代码
+代码已移除 AppId 等敏感信息，开发环境的后台已配置好，可自行添加自己的 AppId 和 AppSecret 后在模拟器中正常登录或在调试模式下进行真机测试，详细添加方法见下文「使用方法」，若后台开发环境已被暂停导致无法登录，请联系作者微信：`aweawds` 重新上传代码
 
 ## 效果展示
 
@@ -32,6 +32,13 @@
     * 执行 `git clone https://github.com/goolhanrry/Weapp-Demo-LemonJournal.git`
     * 或 [点击此处](https://github.com/goolhanrry/Weapp-Demo-LemonJournal/releases) 下载最新版本的代码
 * 解压后在微信开发者工具中打开 `Weapp-Demo-LemonJournal` 文件夹即可
+
+#### 如需进行登录测试，还要执行以下步骤
+
+* 准备好自己的 AppId 和 AppSecret（可在微信公众平台注册后获取）
+* 在 `/project.config.json` 中的 `appid` 字段中填入 AppId
+* 在 `/client/utils/util.js` 中相应位置填入 AppId 和 AppSecret
+* 在微信开发者工具中重新导入整个项目，编译运行即可
 
 ## 核心代码
 
