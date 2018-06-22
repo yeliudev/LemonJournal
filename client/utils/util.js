@@ -1,7 +1,13 @@
-var constants = require('../vendor/wafer2-client-sdk/lib/constants.js');
-var SESSION_KEY = 'weapp_session_' + constants.WX_SESSION_MAGIC_ID;
+var constants = require('../vendor/wafer2-client-sdk/lib/constants.js')
+var SESSION_KEY = 'weapp_session_' + constants.WX_SESSION_MAGIC_ID
 var qcloud = require('../vendor/wafer2-client-sdk/index')
 var config = require('../config')
+
+// 微信小程序 App ID (用于鉴权测试)
+const appId = ''
+
+// 微信小程序 App Secret (用于鉴权测试)
+const appSecret = ''
 
 // 显示读取提示
 var showLoading = title => {
@@ -187,4 +193,4 @@ var getJournalList = (e, alert = false) => {
   })
 }
 
-module.exports = { showLoading, showSuccess, showModal, showAbout, getUserInfo, getBookList, getJournalList }
+module.exports = { appId, appSecret, showLoading, showSuccess, showModal, showAbout, getUserInfo, getBookList, getJournalList }

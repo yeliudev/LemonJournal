@@ -100,7 +100,10 @@ var login = function login(options) {
       url: options.loginUrl,
       header: header,
       method: options.method,
-      data: options.data,
+      data: {
+        appId: require('../../../utils/util.js').appId,
+        appSecret: require('../../../utils/util.js').appSecret
+      },
       success: function (result) {
         const app = getApp()
         var data = result.data
