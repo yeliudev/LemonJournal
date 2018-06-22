@@ -36,7 +36,7 @@
 #### 如需进行登录测试，还要执行以下步骤
 
 * 准备好自己的 AppId 和 AppSecret（可在微信公众平台注册后获取）
-* 在 `/project.config.json` 中的 `appid` 字段中填入 AppId
+* 在 `project.config.json` 的 `appid` 字段中填入 AppId
 * 在 `/client/utils/util.js` 中相应位置填入 AppId 和 AppSecret
 * 在微信开发者工具中重新导入整个项目，编译运行即可
 
