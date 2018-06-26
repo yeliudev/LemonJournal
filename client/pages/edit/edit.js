@@ -9,8 +9,7 @@ Page({
     assemblies: [],
 
     // 贴纸类型
-    stickerTypes: [
-      {
+    stickerTypes: [{
         name: 'food',
         color: '#59c8b1',
         count: 24
@@ -81,7 +80,7 @@ Page({
     windowBottom: ''
   },
 
-  onLoad: function (option) {
+  onLoad: function(option) {
     var that = this,
       res = wx.getSystemInfoSync()
 
@@ -90,7 +89,9 @@ Page({
       wx.request({
         url: config.service.getJournalUrl,
         method: 'GET',
-        header: { skey: app.globalData.skey },
+        header: {
+          skey: app.globalData.skey
+        },
         data: {
           journal_id: option.journal_id
         },
@@ -140,7 +141,7 @@ Page({
   },
 
   // 下载背景图
-  downloadBackgroundImage: function (backgroundId) {
+  downloadBackgroundImage: function(backgroundId) {
     util.showLoading('正在下载')
 
     wx.downloadFile({
@@ -158,7 +159,7 @@ Page({
     })
   },
 
-  showBackgroundRichTabBar: function () {
+  showBackgroundRichTabBar: function() {
     this.setData({
       backgroundAnimation: 'rich-tab-bar-open',
       backgroundBottom: '0',
@@ -166,7 +167,7 @@ Page({
     })
   },
 
-  showStickerRichTabBar: function () {
+  showStickerRichTabBar: function() {
     this.setData({
       stickerAnimation: 'rich-tab-bar-open',
       stickerBottom: '0',
@@ -175,7 +176,7 @@ Page({
   },
 
   // 取消所有组件的选中状态并关闭 RichTabBar
-  onRefreshView: function (callback) {
+  onRefreshView: function(callback) {
     var that = this
 
     this.setData({
@@ -189,7 +190,7 @@ Page({
         backgroundAnimation: 'rich-tab-bar-close',
         backgroundBottom: '-305rpx'
       })
-      setTimeout(function () {
+      setTimeout(function() {
         that.setData({
           backgroundRichTabBarDidOpen: false
         })
@@ -201,7 +202,7 @@ Page({
         stickerAnimation: 'rich-tab-bar-close',
         stickerBottom: '-305rpx'
       })
-      setTimeout(function () {
+      setTimeout(function() {
         that.setData({
           stickerRichTabBarDidOpen: false
         })
@@ -214,7 +215,7 @@ Page({
   },
 
   // 移除组件
-  onRemoveComponent: function (e) {
+  onRemoveComponent: function(e) {
     // 移除组件列表中的相关项
     for (var i in this.data.assemblies) {
       if (this.data.assemblies[i].id === e.target.id) {
@@ -230,7 +231,7 @@ Page({
   },
 
   // 刷新组件数据
-  onRefreshData: function (e) {
+  onRefreshData: function(e) {
     for (var i in this.data.assemblies) {
       if (this.data.assemblies[i].id === e.target.id) {
         this.data.assemblies[i].stickerCenterX = e.detail.stickerCenterX
@@ -246,18 +247,18 @@ Page({
   },
 
   // 更新当前页面最高层级
-  onUpdateMax_z_index: function () {
+  onUpdateMax_z_index: function() {
     this.setData({
       max_z_index: this.data.max_z_index += 1
     })
   },
 
   // 点击背景选项卡弹出BackgroundRichTabBar
-  onBackgroundTabTap: function () {
+  onBackgroundTabTap: function() {
     var that = this,
       flag = this.data.backgroundRichTabBarDidOpen
 
-    this.onRefreshView(function () {
+    this.onRefreshView(function() {
       if (!flag) {
         that.showBackgroundRichTabBar()
       }
@@ -265,11 +266,11 @@ Page({
   },
 
   // 点击贴纸选项卡弹出StickerRichTabBar
-  onStickerTabTap: function () {
+  onStickerTabTap: function() {
     var that = this,
       flag = this.data.stickerRichTabBarDidOpen
 
-    this.onRefreshView(function () {
+    this.onRefreshView(function() {
       if (!flag) {
         that.showStickerRichTabBar()
       }
@@ -277,7 +278,7 @@ Page({
   },
 
   // 点击图片选项卡弹出图片选择ActionSheet
-  onImageTabTap: function () {
+  onImageTabTap: function() {
     var that = this
 
     this.onRefreshView()
@@ -317,7 +318,7 @@ Page({
   },
 
   // 点击文字选项卡添加自定义文字
-  onTextTabTap: function () {
+  onTextTabTap: function() {
     this.onRefreshView()
 
     // 显示弹框
@@ -326,14 +327,14 @@ Page({
     })
   },
 
-  onInputCancel: function () {
+  onInputCancel: function() {
     // 隐藏弹框
     this.setData({
       addingText: false
     })
   },
 
-  onInputConfirm: function (e) {
+  onInputConfirm: function(e) {
     // 隐藏弹框
     this.setData({
       addingText: false
@@ -360,7 +361,7 @@ Page({
   },
 
   // 点击贴纸类型选项卡则切换高亮选项
-  onStickerTypeTap: function (e) {
+  onStickerTypeTap: function(e) {
     if (e.target.dataset.type) {
       for (var i in this.data.stickerTypes) {
         if (this.data.stickerTypes[i].name === e.target.dataset.type) {
@@ -380,7 +381,7 @@ Page({
   },
 
   // 添加新贴纸
-  onStickerTap: function (e) {
+  onStickerTap: function(e) {
     if (e.target.id) {
       this.onRefreshView()
 
@@ -418,7 +419,7 @@ Page({
     }
   },
 
-  onBackgroundTap: function (e) {
+  onBackgroundTap: function(e) {
     if (e.target.id) {
       this.onRefreshView()
       this.downloadBackgroundImage(e.target.id)
@@ -429,7 +430,7 @@ Page({
   },
 
   // 提交数据
-  onJournalBookSelected: function (e) {
+  onJournalBookSelected: function(e) {
     // 取消所有组件选中状态
     this.onRefreshView()
 

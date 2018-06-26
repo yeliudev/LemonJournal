@@ -12,7 +12,7 @@ Page({
     background_id: '1'
   },
 
-  onLoad: function () {
+  onLoad: function() {
     // 判断用户是否已经授权
     this.setData({
       authorized: app.globalData.authorized ? true : false,
@@ -32,16 +32,16 @@ Page({
     }
   },
 
-  onShow: function () {
+  onShow: function() {
     util.getBookList(this)
   },
 
-  onGetUserInfo: function (e) {
+  onGetUserInfo: function(e) {
     var that = this
     if (e.detail.errMsg === 'getUserInfo:ok') {
       app.globalData.authorized = true
       // 执行登录请求
-      util.getUserInfo(function () {
+      util.getUserInfo(function() {
         that.setData({
           authorized: true,
         })
@@ -51,15 +51,15 @@ Page({
     }
   },
 
-  onRefreshBookList: function () {
+  onRefreshBookList: function() {
     util.getBookList(this)
   },
 
-  onAvatarTap: function () {
+  onAvatarTap: function() {
     util.showAbout()
   },
 
-  onNewJournalBookTap: function () {
+  onNewJournalBookTap: function() {
     // 若未授权则直接返回
     if (!app.globalData.authorized) {
       util.showModal('提示', '请先授权登录')
@@ -78,13 +78,13 @@ Page({
     })
   },
 
-  onBlur: function (e) {
+  onBlur: function(e) {
     this.setData({
       name: e.detail.value
     })
   },
 
-  onBookCoverTap: function (e) {
+  onBookCoverTap: function(e) {
     // 更新封面选中状态
     this.data.bookCovers = new Array(12)
     this.data.bookCovers[e.target.id - 1] = 'box-shadow: 0 0 12px #365c8d;'
@@ -95,19 +95,21 @@ Page({
     })
   },
 
-  onReturnButtonTap: function () {
+  onReturnButtonTap: function() {
     util.getBookList(this)
     this.setData({
       style: ''
     })
   },
 
-  onSubmitButtonTap: function () {
+  onSubmitButtonTap: function() {
     var that = this
     wx.request({
       url: config.service.newJournalBookUrl,
       method: 'POST',
-      header: { skey: app.globalData.skey },
+      header: {
+        skey: app.globalData.skey
+      },
       data: {
         name: this.data.name ? this.data.name : '我的手帐本',
         background_id: this.data.background_id
@@ -134,7 +136,7 @@ Page({
     })
   },
 
-  onAddNewJournal: function () {
+  onAddNewJournal: function() {
     // 若当前无可用手账本则直接返回
     if (this.data.bookList.length === 0) {
       util.showModal('提示', '请先添加手帐本')

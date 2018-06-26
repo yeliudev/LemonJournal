@@ -30,7 +30,7 @@ Component({
   },
 
   methods: {
-    onSettingsTap: function () {
+    onSettingsTap: function() {
       // 初始化封面选中状态
       this.data.bookCovers = new Array(12)
       this.data.bookCovers[this.data.background_id - 1] = 'box-shadow: 0 0 12px #365c8d;'
@@ -42,7 +42,7 @@ Component({
       })
     },
 
-    onBookTap: function () {
+    onBookTap: function() {
       if (app.globalData.authorized) {
         wx.navigateTo({
           url: '/pages/journalList/journalList?journal_book_id=' + this.data.journal_book_id
@@ -55,13 +55,13 @@ Component({
       }
     },
 
-    onBlur: function (e) {
+    onBlur: function(e) {
       this.setData({
         newName: e.detail.value
       })
     },
 
-    onBookCoverTap: function (e) {
+    onBookCoverTap: function(e) {
       // 更新封面选中状态
       this.data.bookCovers = new Array(12)
       this.data.bookCovers[e.target.id - 1] = 'box-shadow: 0 0 12px #365c8d;'
@@ -72,20 +72,22 @@ Component({
       })
     },
 
-    onReturnButtonTap: function () {
+    onReturnButtonTap: function() {
       this.triggerEvent('refreshBookList')
       this.setData({
         style: ''
       })
     },
 
-    onSubmitButtonTap: function () {
+    onSubmitButtonTap: function() {
       var that = this
 
       wx.request({
         url: config.service.setJournalBookUrl,
         method: 'POST',
-        header: { skey: app.globalData.skey },
+        header: {
+          skey: app.globalData.skey
+        },
         data: {
           journal_book_id: this.data.journal_book_id,
           name: this.data.newName ? this.data.newName : this.data.name,
@@ -112,7 +114,7 @@ Component({
       })
     },
 
-    onRemoveButtonTap: function () {
+    onRemoveButtonTap: function() {
       var that = this
 
       wx.showActionSheet({
@@ -122,7 +124,9 @@ Component({
           wx.request({
             url: config.service.delJournalBookUrl,
             method: 'POST',
-            header: { skey: app.globalData.skey },
+            header: {
+              skey: app.globalData.skey
+            },
             data: {
               journal_book_id: that.data.journal_book_id,
             },

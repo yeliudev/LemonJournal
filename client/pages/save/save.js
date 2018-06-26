@@ -15,7 +15,7 @@ Page({
     assemblies: []
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     var that = this
     util.showLoading('正在渲染')
 
@@ -33,7 +33,7 @@ Page({
     this.draw()
   },
 
-  uploadImageCallback: function (e) {
+  uploadImageCallback: function(e) {
     // 构造保存手帐组件信息的 Object
     this.componentObject = {
       backgroundId: this.data.backgroundId,
@@ -45,7 +45,9 @@ Page({
       wx.request({
         url: config.service.newJournalUrl,
         method: 'POST',
-        header: { skey: app.globalData.skey },
+        header: {
+          skey: app.globalData.skey
+        },
         data: {
           journal_id: this.data.journal_id,
           journal_book_id: this.data.journal_book_id,
@@ -72,7 +74,9 @@ Page({
       wx.request({
         url: config.service.setJournalUrl,
         method: 'POST',
-        header: { skey: app.globalData.skey },
+        header: {
+          skey: app.globalData.skey
+        },
         data: {
           journal_id: this.data.journal_id,
           previewUrl: this.data.previewImageUrl,
@@ -97,9 +101,9 @@ Page({
 
   },
 
-  draw: function () {
+  draw: function() {
     // 按照 z-index 的大小对组件排序
-    var sortedAssemblies = this.data.assemblies.sort(function (value1, value2) {
+    var sortedAssemblies = this.data.assemblies.sort(function(value1, value2) {
       if (value1.z_index < value2.z_index) {
         return -1;
       } else if (value1.z_index > value2.z_index) {
@@ -120,44 +124,47 @@ Page({
       ctx.translate(sortedAssemblies[i].stickerCenterX, sortedAssemblies[i].stickerCenterY)
       ctx.rotate(sortedAssemblies[i].rotate * Math.PI / 180)
       switch (sortedAssemblies[i].component_type) {
-        case 'sticker': {
-          ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale, -100 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale)
-          break
-        }
-        case 'image': {
-          if (sortedAssemblies[i].wh_scale >= 1) {
-            ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale, -100 * sortedAssemblies[i].scale / sortedAssemblies[i].wh_scale, 200 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale / sortedAssemblies[i].wh_scale)
-          } else {
-            ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale * sortedAssemblies[i].wh_scale, -100 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale * sortedAssemblies[i].wh_scale, 200 * sortedAssemblies[i].scale)
+        case 'sticker':
+          {
+            ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale, -100 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale)
+            break
           }
-          break
-        }
-        case 'text': {
-          // 初始化字体大小
-          ctx.setFontSize(28 * sortedAssemblies[i].scale)
-
-          // 分割字符串
-          var textArray = sortedAssemblies[i].text.split(''),
-            temp = '',
-            row = []
-
-          // 按长度组合每行的文本
-          for (var j in textArray) {
-            if (ctx.measureText(temp).width > 180 * sortedAssemblies[i].scale) {
-              row.push(temp)
-              temp = ''
+        case 'image':
+          {
+            if (sortedAssemblies[i].wh_scale >= 1) {
+              ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale, -100 * sortedAssemblies[i].scale / sortedAssemblies[i].wh_scale, 200 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale / sortedAssemblies[i].wh_scale)
+            } else {
+              ctx.drawImage(sortedAssemblies[i].image_url, -100 * sortedAssemblies[i].scale * sortedAssemblies[i].wh_scale, -100 * sortedAssemblies[i].scale, 200 * sortedAssemblies[i].scale * sortedAssemblies[i].wh_scale, 200 * sortedAssemblies[i].scale)
             }
-            temp += textArray[j]
+            break
           }
-          row.push(temp)
+        case 'text':
+          {
+            // 初始化字体大小
+            ctx.setFontSize(28 * sortedAssemblies[i].scale)
 
-          // 绘制文本
-          for (var k in row) {
-            ctx.fillText(row[k], 0, (4 * (k + 1) - 100) * sortedAssemblies[i].scale)
+            // 分割字符串
+            var textArray = sortedAssemblies[i].text.split(''),
+              temp = '',
+              row = []
+
+            // 按长度组合每行的文本
+            for (var j in textArray) {
+              if (ctx.measureText(temp).width > 180 * sortedAssemblies[i].scale) {
+                row.push(temp)
+                temp = ''
+              }
+              temp += textArray[j]
+            }
+            row.push(temp)
+
+            // 绘制文本
+            for (var k in row) {
+              ctx.fillText(row[k], 0, (4 * (k + 1) - 100) * sortedAssemblies[i].scale)
+            }
+
+            break
           }
-
-          break
-        }
       }
       // 恢复上下文状态
       ctx.rotate(-sortedAssemblies[i].rotate * Math.PI / 180)
@@ -166,7 +173,7 @@ Page({
 
     // 开始渲染
     var that = this
-    ctx.draw(false, function () {
+    ctx.draw(false, function() {
       wx.canvasToTempFilePath({
         canvasId: 'preview_canvas',
         success: res => {
@@ -181,7 +188,9 @@ Page({
           wx.request({
             url: config.service.newJournalIdUrl,
             method: 'GET',
-            header: { skey: app.globalData.skey },
+            header: {
+              skey: app.globalData.skey
+            },
             success: idRes => {
               if (idRes.data.success) {
                 // 若为新手帐则刷新手帐id
@@ -213,7 +222,7 @@ Page({
     })
   },
 
-  onSaveJournal: function () {
+  onSaveJournal: function() {
     wx.saveImageToPhotosAlbum({
       filePath: this.data.previewImagePath,
       success: res => {
@@ -222,7 +231,7 @@ Page({
     })
   },
 
-  onShareAppMessage: function (res) {
+  onShareAppMessage: function(res) {
     return {
       title: '来制作属于自己的手帐吧',
       path: '/pages/index/index'

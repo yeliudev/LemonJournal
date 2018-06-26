@@ -24,7 +24,7 @@ Component({
     modalOpacity: '1'
   },
 
-  attached: function () {
+  attached: function() {
     var res = wx.getSystemInfoSync()
 
     this.setData({
@@ -35,14 +35,14 @@ Component({
 
   methods: {
     // 监听用户输入
-    onInput: function (e) {
+    onInput: function(e) {
       this.setData({
         text: e.detail.value
       })
     },
 
     // 隐藏输入框
-    hideInputBox: function () {
+    hideInputBox: function() {
       this.setData({
         shadowAnimation: 'shadowHide',
         modalAnimation: 'modalHide',
@@ -51,25 +51,25 @@ Component({
       })
     },
 
-    onCancelTap: function () {
+    onCancelTap: function() {
       var that = this
       this.hideInputBox()
 
-      setTimeout(function () {
+      setTimeout(function() {
         that.triggerEvent('inputCancel')
       }, 350)
     },
 
-    onConfirmTap: function () {
+    onConfirmTap: function() {
       var that = this
       this.hideInputBox()
 
-      setTimeout(function () {
+      setTimeout(function() {
         that.triggerEvent('inputConfirm', that.data.text)
       }, 350)
     },
 
     // 捕获背景的点击事件以防止冒泡
-    tapCatcher: function () { },
+    tapCatcher: function() {},
   }
 })

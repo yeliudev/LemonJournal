@@ -6,8 +6,10 @@ var getSignature = () => {
   wx.request({
     url: config.service.signUrl,
     method: 'GET',
-    header: { skey: app.globalData.skey },
-    success: function (res) {
+    header: {
+      skey: app.globalData.skey
+    },
+    success: function(res) {
       return res.data.signature
     }
   })
@@ -25,7 +27,9 @@ var uploadImage = (localImageObjects, journal_book_id, journal_id, previewImageP
   wx.request({
     url: config.service.signUrl,
     method: 'GET',
-    header: { skey: app.globalData.skey },
+    header: {
+      skey: app.globalData.skey
+    },
     success: res => {
       if (res.data.success) {
         // 上传预览图
@@ -33,7 +37,9 @@ var uploadImage = (localImageObjects, journal_book_id, journal_id, previewImageP
         wx.uploadFile({
           url: `${config.service.cosUrl}${res.data.data.open_id}/${journal_book_id}/${journal_id}/preview_${previewFileName}.png`,
           filePath: previewImagePath,
-          header: { 'Authorization': res.data.data.signature },
+          header: {
+            'Authorization': res.data.data.signature
+          },
           name: 'filecontent',
           formData: {
             op: 'upload'
@@ -60,42 +66,49 @@ var doUpload = (data, localImageObjects, webImageObjects, journal_book_id, journ
   var imageObject = localImageObjects.pop()
   if (imageObject) {
     switch (imageObject.component_type) {
-      case 'image': {
-        wx.uploadFile({
-          url: `${config.service.cosUrl}${data.open_id}/${journal_book_id}/${journal_id}/${imageObject.id}.png`,
-          filePath: imageObject.image_url,
-          header: { 'Authorization': data.signature },
-          name: 'filecontent',
-          formData: {
-            op: 'upload'
-          },
-          success: () => {
-            imageObject.image_url = `${config.service.cos_host_cdn}/user_data/${data.open_id}/${journal_book_id}/${journal_id}/${imageObject.id}.png`
-            webImageObjects.push(imageObject)
-            doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
-          },
-          fail: error => {
-            util.showModal('上传失败', error, true)
-            return
-          }
-        })
-        break
-      }
-      case 'sticker': {
-        imageObject.image_url = `${config.service.stickerUrl}${imageObject.sticker_type}/${imageObject.sticker_id}.png`
-        webImageObjects.push(imageObject)
-        doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
-        break
-      }
-      case 'text': {
-        webImageObjects.push(imageObject)
-        doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
-        break
-      }
+      case 'image':
+        {
+          wx.uploadFile({
+            url: `${config.service.cosUrl}${data.open_id}/${journal_book_id}/${journal_id}/${imageObject.id}.png`,
+            filePath: imageObject.image_url,
+            header: {
+              'Authorization': data.signature
+            },
+            name: 'filecontent',
+            formData: {
+              op: 'upload'
+            },
+            success: () => {
+              imageObject.image_url = `${config.service.cos_host_cdn}/user_data/${data.open_id}/${journal_book_id}/${journal_id}/${imageObject.id}.png`
+              webImageObjects.push(imageObject)
+              doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
+            },
+            fail: error => {
+              util.showModal('上传失败', error, true)
+              return
+            }
+          })
+          break
+        }
+      case 'sticker':
+        {
+          imageObject.image_url = `${config.service.stickerUrl}${imageObject.sticker_type}/${imageObject.sticker_id}.png`
+          webImageObjects.push(imageObject)
+          doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
+          break
+        }
+      case 'text':
+        {
+          webImageObjects.push(imageObject)
+          doUpload(data, localImageObjects, webImageObjects, journal_book_id, journal_id, callback)
+          break
+        }
     }
   } else {
     callback(webImageObjects)
   }
 }
 
-module.exports = { uploadImage }
+module.exports = {
+  uploadImage
+}

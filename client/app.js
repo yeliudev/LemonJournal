@@ -10,7 +10,7 @@ App({
     bookList: []
   },
 
-  onLaunch: function () {
+  onLaunch: function() {
     var that = this
 
     // 判断用户是否已授权
@@ -23,7 +23,7 @@ App({
               // session_key 未过期，并且在本生命周期一直有效
               this.globalData.skey = wx.getStorageSync(SESSION_KEY)
               if (!this.globalData.skey) {
-                util.getUserInfo(function () {
+                util.getUserInfo(function() {
                   if (that.skeyReadyCallback) {
                     that.skeyReadyCallback()
                   }
@@ -36,7 +36,7 @@ App({
             },
             fail: () => {
               // session_key 已过期，重新执行登录流程
-              util.getUserInfo(function () {
+              util.getUserInfo(function() {
                 if (that.skeyReadyCallback) {
                   that.skeyReadyCallback()
                 }

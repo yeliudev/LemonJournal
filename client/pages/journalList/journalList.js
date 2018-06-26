@@ -6,17 +6,17 @@ Page({
     journals: []
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     this.setData({
       journal_book_id: options.journal_book_id
     })
   },
 
-  onShow: function () {
+  onShow: function() {
     util.getJournalList(this, true)
   },
 
-  onRefreshJournalList: function () {
+  onRefreshJournalList: function() {
     util.getJournalList(this, false)
   }
 })

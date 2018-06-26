@@ -83,7 +83,7 @@ var getUserInfo = (callback, alertSuccess = true) => {
             }
           },
           fail: error => {
-            showModal('请求失败', error, true)
+            showModal('请求失败', JSON.parse(error), true)
             if (callback) {
               callback()
             }
@@ -92,7 +92,7 @@ var getUserInfo = (callback, alertSuccess = true) => {
       }
     },
     fail: error => {
-      showModal('登录失败', error, true)
+      showModal('登录失败', JSON.parse(error), true)
       if (callback) {
         callback()
       }
@@ -113,7 +113,9 @@ var getBookList = (e, alert = false) => {
     wx.request({
       url: config.service.bookListUrl,
       method: 'GET',
-      header: { skey: app.globalData.skey },
+      header: {
+        skey: app.globalData.skey
+      },
       success: res => {
         if (res.data.success) {
           if (alert) {
@@ -155,7 +157,9 @@ var getJournalList = (e, alert = false) => {
   wx.request({
     url: config.service.journalListUrl,
     method: 'GET',
-    header: { skey: app.globalData.skey },
+    header: {
+      skey: app.globalData.skey
+    },
     data: {
       journal_book_id: e.data.journal_book_id
     },
@@ -193,4 +197,14 @@ var getJournalList = (e, alert = false) => {
   })
 }
 
-module.exports = { appId, appSecret, showLoading, showSuccess, showModal, showAbout, getUserInfo, getBookList, getJournalList }
+module.exports = {
+  appId,
+  appSecret,
+  showLoading,
+  showSuccess,
+  showModal,
+  showAbout,
+  getUserInfo,
+  getBookList,
+  getJournalList
+}

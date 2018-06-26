@@ -74,49 +74,51 @@ Component({
     hideRemove: false
   },
 
-  attached: function () {
+  attached: function() {
     this.active()
   },
 
   methods: {
-    onTouchStart: function (e) {
+    onTouchStart: function(e) {
       // 若未选中则直接返回
       if (!this.data.selected) {
         return
       }
 
       switch (e.target.id) {
-        case 'sticker': {
-          this.touch_target = e.target.id
-          this.start_x = e.touches[0].clientX * 2
-          this.start_y = e.touches[0].clientY * 2
-          break
-        }
-        case 'handle': {
-          // 隐藏移除按钮
-          this.setData({
-            hideRemove: true
-          })
+        case 'sticker':
+          {
+            this.touch_target = e.target.id
+            this.start_x = e.touches[0].clientX * 2
+            this.start_y = e.touches[0].clientY * 2
+            break
+          }
+        case 'handle':
+          {
+            // 隐藏移除按钮
+            this.setData({
+              hideRemove: true
+            })
 
-          this.touch_target = e.target.id
-          this.start_x = e.touches[0].clientX * 2
-          this.start_y = e.touches[0].clientY * 2
+            this.touch_target = e.target.id
+            this.start_x = e.touches[0].clientX * 2
+            this.start_y = e.touches[0].clientY * 2
 
-          this.sticker_center_x = this.data.stickerCenterX;
-          this.sticker_center_y = this.data.stickerCenterY;
-          this.remove_center_x = this.data.removeCenterX;
-          this.remove_center_y = this.data.removeCenterY;
-          this.handle_center_x = this.data.handleCenterX;
-          this.handle_center_y = this.data.handleCenterY;
+            this.sticker_center_x = this.data.stickerCenterX;
+            this.sticker_center_y = this.data.stickerCenterY;
+            this.remove_center_x = this.data.removeCenterX;
+            this.remove_center_y = this.data.removeCenterY;
+            this.handle_center_x = this.data.handleCenterX;
+            this.handle_center_y = this.data.handleCenterY;
 
-          this.scale = this.data.scale;
-          this.rotate = this.data.rotate;
-          break
-        }
+            this.scale = this.data.scale;
+            this.rotate = this.data.rotate;
+            break
+          }
       }
     },
 
-    onTouchEnd: function (e) {
+    onTouchEnd: function(e) {
       this.active()
       this.touch_target = ''
 
@@ -135,7 +137,7 @@ Component({
       }
     },
 
-    onTouchMove: function (e) {
+    onTouchMove: function(e) {
       // 若无选中目标则返回
       if (!this.touch_target) {
         return
@@ -147,40 +149,42 @@ Component({
       var diff_y = current_y - this.start_y
 
       switch (e.target.id) {
-        case 'sticker': {
-          // 拖动组件则所有控件同时移动
-          this.setData({
-            stickerCenterX: this.data.stickerCenterX + diff_x,
-            stickerCenterY: this.data.stickerCenterY + diff_y,
-            removeCenterX: this.data.removeCenterX + diff_x,
-            removeCenterY: this.data.removeCenterY + diff_y,
-            handleCenterX: this.data.handleCenterX + diff_x,
-            handleCenterY: this.data.handleCenterY + diff_y
-          })
-          break
-        }
-        case 'handle': {
-          // 拖动操作按钮则原地旋转缩放
-          this.setData({
-            handleCenterX: this.data.handleCenterX + diff_x,
-            handleCenterY: this.data.handleCenterY + diff_y
-          })
+        case 'sticker':
+          {
+            // 拖动组件则所有控件同时移动
+            this.setData({
+              stickerCenterX: this.data.stickerCenterX + diff_x,
+              stickerCenterY: this.data.stickerCenterY + diff_y,
+              removeCenterX: this.data.removeCenterX + diff_x,
+              removeCenterY: this.data.removeCenterY + diff_y,
+              handleCenterX: this.data.handleCenterX + diff_x,
+              handleCenterY: this.data.handleCenterY + diff_y
+            })
+            break
+          }
+        case 'handle':
+          {
+            // 拖动操作按钮则原地旋转缩放
+            this.setData({
+              handleCenterX: this.data.handleCenterX + diff_x,
+              handleCenterY: this.data.handleCenterY + diff_y
+            })
 
-          var diff_x_before = this.handle_center_x - this.sticker_center_x;
-          var diff_y_before = this.handle_center_y - this.sticker_center_y;
-          var diff_x_after = this.data.handleCenterX - this.sticker_center_x;
-          var diff_y_after = this.data.handleCenterY - this.sticker_center_y;
-          var distance_before = Math.sqrt(diff_x_before * diff_x_before + diff_y_before * diff_y_before);
-          var distance_after = Math.sqrt(diff_x_after * diff_x_after + diff_y_after * diff_y_after);
-          var angle_before = Math.atan2(diff_y_before, diff_x_before) / Math.PI * 180;
-          var angle_after = Math.atan2(diff_y_after, diff_x_after) / Math.PI * 180;
+            var diff_x_before = this.handle_center_x - this.sticker_center_x;
+            var diff_y_before = this.handle_center_y - this.sticker_center_y;
+            var diff_x_after = this.data.handleCenterX - this.sticker_center_x;
+            var diff_y_after = this.data.handleCenterY - this.sticker_center_y;
+            var distance_before = Math.sqrt(diff_x_before * diff_x_before + diff_y_before * diff_y_before);
+            var distance_after = Math.sqrt(diff_x_after * diff_x_after + diff_y_after * diff_y_after);
+            var angle_before = Math.atan2(diff_y_before, diff_x_before) / Math.PI * 180;
+            var angle_after = Math.atan2(diff_y_after, diff_x_after) / Math.PI * 180;
 
-          this.setData({
-            scale: distance_after / distance_before * this.scale,
-            rotate: angle_after - angle_before + this.rotate
-          })
-          break
-        }
+            this.setData({
+              scale: distance_after / distance_before * this.scale,
+              rotate: angle_after - angle_before + this.rotate
+            })
+            break
+          }
       }
 
       this.start_x = current_x;
@@ -188,7 +192,7 @@ Component({
     },
 
     // 激活组件
-    active: function () {
+    active: function() {
       // 刷新按钮坐标
       this.setData({
         removeCenterX: this.data.stickerCenterX - 100 * Math.sqrt(2) * this.data.scale * Math.cos((45 + this.data.rotate) * Math.PI / 180),
