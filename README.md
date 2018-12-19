@@ -16,15 +16,15 @@
 ## 效果展示
 
 <p align="center">
-  <img width="200px" height="356px" src="Screenshots/1.png" hspace="30px" />
-  <img width="200px" height="356px" src="Screenshots/2.png" hspace="30px" />
-  <img width="200px" height="356px" src="Screenshots/3.png" hspace="30px" />
+  <img width="200" src="Screenshots/1.png" hspace="30px" />
+  <img width="200" src="Screenshots/2.png" hspace="30px" />
+  <img width="200" src="Screenshots/3.png" hspace="30px" />
 </p>
 
 <p align="center">
-  <img width="200px" height="356px" src="Screenshots/4.png" hspace="30px" />
-  <img width="200px" height="356px" src="Screenshots/5.png" hspace="30px" />
-  <img width="200px" height="356px" src="Screenshots/6.png" hspace="30px" />
+  <img width="200" src="Screenshots/4.png" hspace="30px" />
+  <img width="200" src="Screenshots/5.png" hspace="30px" />
+  <img width="200" src="Screenshots/6.png" hspace="30px" />
 </p>
 
 ## 使用方法
@@ -208,12 +208,12 @@ onTouchMove: function (e) {
 作者是一名大二学生，如果觉得我写得不错，不如请我喝杯咖啡吧 ☕️
 
 <p align="center">
-  <img width="200px" height="270px" src="payment/wechat-pay.jpg" hspace="50px" />
-  <img width="200px" height="300px" src="payment/alipay.jpg" hspace="50px" />
+  <img width="200" src="payment/wechat-pay.jpg" hspace="50px" />
+  <img width="200" src="payment/alipay.jpg" hspace="50px" />
 </p>
 
 ## License
 
 [MIT License](LICENSE)
 
-Copyright (c) 2018 goolhanrry
+Copyright (c) 2019 goolhanrry
