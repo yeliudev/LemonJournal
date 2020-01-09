@@ -11,20 +11,18 @@
 
 代码已移除 AppId 等敏感信息，可自行添加自己的 AppId 和 AppSecret 以配置后台环境，实现登录测试，详细添加方法见下文「使用方法」，若本地运行可通过修改 `app.json` 文件中 `page` 字段的顺序来查看不同页面
 
-微信小程序定制需求请联系作者微信：`aweawds` (注明来意)
-
 ## 效果展示
 
 <p align="center">
-  <img width="200" src="Screenshots/1.png" hspace="30px" />
-  <img width="200" src="Screenshots/2.png" hspace="30px" />
-  <img width="200" src="Screenshots/3.png" hspace="30px" />
+  <img width="200" src="screenshots/1.png" hspace="30px" />
+  <img width="200" src="screenshots/2.png" hspace="30px" />
+  <img width="200" src="screenshots/3.png" hspace="30px" />
 </p>
 
 <p align="center">
-  <img width="200" src="Screenshots/4.png" hspace="30px" />
-  <img width="200" src="Screenshots/5.png" hspace="30px" />
-  <img width="200" src="Screenshots/6.png" hspace="30px" />
+  <img width="200" src="screenshots/4.png" hspace="30px" />
+  <img width="200" src="screenshots/5.png" hspace="30px" />
+  <img width="200" src="screenshots/6.png" hspace="30px" />
 </p>
 
 ## 使用方法
@@ -203,17 +201,8 @@ onTouchMove: function (e) {
 }
 ```
 
-## 捐赠
-
-作者是一名大二学生，如果觉得我写得不错，不如请我喝杯咖啡吧 ☕️
-
-<p align="center">
-  <img width="200" src="payment/wechat-pay.jpg" hspace="50px" />
-  <img width="200" src="payment/alipay.jpg" hspace="50px" />
-</p>
-
 ## License
 
 [MIT License](LICENSE)
 
-Copyright (c) 2019 goolhanrry
+Copyright (c) 2019 Ye Liu
