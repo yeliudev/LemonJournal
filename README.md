@@ -1,37 +1,34 @@
-# Weapp-Demo-LemonJournal
+# LemonJournal
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Language](https://img.shields.io/badge/javascript-ES6-orange.svg)](https://www.javascript.com/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/c1aris/Weapp-Demo-LemonJournal.svg)](https://github.com/c1aris/Weapp-Demo-LemonJournal/commits/master)
-[![GitHub repo size in bytes](https://img.shields.io/github/repo-size/c1aris/Weapp-Demo-LemonJournal.svg?colorB=fa5b19)](https://github.com/c1aris/Weapp-Demo-LemonJournal)
 
-参加比赛的作品，开发周期一个月，使用了 [Wafer2](https://github.com/tencentyun/wafer2-startup) 框架，后台采用腾讯云提供的 Node.js SDK 接入对象存储 API ，前端核心代码实现了类似于图片编辑器的功能，支持图片和文字的移动、旋转、缩放、生成预览图以及编辑状态的保存，动画部分采用 CSS 动画实现
+该项目基于 [Wafer2](https://github.com/tencentyun/wafer2-startup) 框架开发，后台采用腾讯云提供的 Node.js SDK 接入对象存储 API ，前端核心代码实现了图片编辑器的功能，支持图片和文字的移动、旋转、缩放、生成预览图以及编辑状态的保存，动画部分采用 CSS 动画实现
 
-小程序中的模态输入框部分使用了自己封装的 [InputBox](https://github.com/c1aris/Weapp-Demo-Inputbox) 组件
+小程序中的模态输入框为单独封装的 [InputBox](https://github.com/yeliudev/weapp-inputbox) 组件
 
 代码已移除 AppId 等敏感信息，可自行添加自己的 AppId 和 AppSecret 以配置后台环境，实现登录测试，详细添加方法见下文「使用方法」，若本地运行可通过修改 `app.json` 文件中 `page` 字段的顺序来查看不同页面
 
 ## 效果展示
 
 <p align="center">
-  <img width="200" src="screenshots/1.png" hspace="30px" />
-  <img width="200" src="screenshots/2.png" hspace="30px" />
-  <img width="200" src="screenshots/3.png" hspace="30px" />
+  <img width="200" src=".github/screenshot1.png" hspace="30px" />
+  <img width="200" src=".github/screenshot2.png" hspace="30px" />
+  <img width="200" src=".github/screenshot3.png" hspace="30px" />
 </p>
 
 <p align="center">
-  <img width="200" src="screenshots/4.png" hspace="30px" />
-  <img width="200" src="screenshots/5.png" hspace="30px" />
-  <img width="200" src="screenshots/6.png" hspace="30px" />
+  <img width="200" src=".github/screenshot4.png" hspace="30px" />
+  <img width="200" src=".github/screenshot5.png" hspace="30px" />
+  <img width="200" src=".github/screenshot6.png" hspace="30px" />
 </p>
 
 ## 使用方法
 
-* 首先点击右上角 `🌟Star` ʕ •ᴥ•ʔ
 * 获取Demo代码
-    * 执行 `git clone https://github.com/c1aris/Weapp-Demo-LemonJournal.git`
-    * 或 [点击此处](https://github.com/c1aris/Weapp-Demo-LemonJournal/releases) 下载最新版本的代码
-* 解压后在微信开发者工具中打开 `Weapp-Demo-LemonJournal` 文件夹即可
+    * 执行 `git clone https://github.com/yeliudev/LemonJournal.git`
+    * 或 [点击此处](https://github.com/yeliudev/LemonJournal/releases) 下载最新版本的代码
+* 解压后在微信开发者工具中打开 `LemonJournal` 文件夹即可
 
 #### 如需进行登录测试，还要执行以下步骤
 
@@ -44,7 +41,7 @@
 
 #### 组件的移动、旋转和缩放
 
-* 主要思路是把 `<image>` 标签（对应图片）和 `<text>` 标签（对应文字）封装在同一个自定义组件 `<sticker>` 中，通过对外暴露的 `text` 变量是否为空来进行条件渲染，然后绑定 `onTouchStart()` 、`onTouchEnd()` 和 `onTouchMove()` 三个事件来对整个组件的位置、角度、大小、层级以及 “旋转” 和 “移除” 两个按钮的行为进行操作
+* 主要思路为将 `<image>` 标签（对应图片）和 `<text>` 标签（对应文字）封装在同一个自定义组件 `<sticker>` 中，通过对外暴露的 `text` 变量是否为空来进行条件渲染，然后绑定 `onTouchStart()` 、`onTouchEnd()` 和 `onTouchMove()` 三个事件来对整个组件的位置、角度、大小、层级以及 “旋转” 和 “移除” 两个按钮的行为进行操作
 
 ``` js
 onTouchStart: function (e) {
@@ -205,4 +202,4 @@ onTouchMove: function (e) {
 
 [MIT License](LICENSE)
 
-Copyright (c) 2019 c1aris
+Copyright (c) 2020 Ye Liu
