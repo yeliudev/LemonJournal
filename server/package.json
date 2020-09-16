@@ -19,7 +19,7 @@
         "koa-log4": "^2.1.0",
         "koa-router": "^7.0.1",
         "koa-static": "^4.0.3",
-        "lodash": "^4.17.4",
+        "lodash": "^4.17.19",
         "mkdir-p": "0.0.7",
         "moment": "^2.22.1",
         "mysql": "^2.14.1",
