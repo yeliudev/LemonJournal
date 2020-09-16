@@ -11,7 +11,7 @@
     "author": "Jason",
     "license": "MIT",
     "dependencies": {
-        "axios": "^0.15.3",
+        "axios": "^0.18.1",
         "cos-nodejs-sdk-v5": "^2.4.3",
         "knex": "^0.19.5",
         "koa": "^2.0.0",
