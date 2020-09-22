@@ -3,13 +3,13 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://o4jlwfem.qcloud.la'
+var host = ''
 
 // 腾讯云对象存储 CDN 域名
-var cos_host_cdn = 'https://lemonjournal-bucket-1251259528.file.myqcloud.com'
+var cos_host_cdn = ''
 
 // 腾讯云对象存储原始域名
-var cos_host = 'https://lemonjournal-bucket-1251259528.cosgz.myqcloud.com'
+var cos_host = ''
 
 var config = {
 
@@ -74,7 +74,7 @@ var config = {
     signUrl: `${host}/weapp/sign`,
 
     // COS 上传接口
-    cosUrl: 'https://gz.file.myqcloud.com/files/v2/1251259528/lemonjournal-bucket/user_data/'
+    cosUrl: ''
   }
 }
 
