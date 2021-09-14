@@ -1,0 +1,14 @@
+<view class='inputBox-container' catchtap='tapCatcher'>
+  <view class='shadow' style='opacity:{{ shadowOpacity }};animation:{{ shadowAnimation }} 0.35s;' />
+  <view class='modal' style='Bottom:{{ modalBottom }}rpx;height:{{ modalHeight }}rpx;opacity:{{ modalOpacity }};animation:{{ modalAnimation }} 0.35s;'>
+    <text class='title'>{{ title }}</text>
+    <input class='singleline-input' placeholder='{{ placeholder }}' cursor-spacing='150' maxlength='8' bindinput='onInput' wx:if='{{ !multiline }}' />
+    <textarea class='multiline-input' cursor-spacing='175' bindinput='onInput' wx:if='{{ multiline }}' />
+    <view class='cancel-container' catchtap='onCancelTap'>
+      <view class='cancel'>取消</view>
+    </view>
+    <view class='confirm-container' catchtap='onConfirmTap'>
+      <view class='confirm'>确定</view>
+    </view>
+  </view>
+</view>

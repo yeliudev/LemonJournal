@@ -1,0 +1,7 @@
+<view class='sticker-container' catchtouchstart='onTouchStart' catchtouchend='onTouchEnd' catchtouchmove='onTouchMove'>
+  <image class='sticker' id='sticker' src='{{ image_url }}' mode='aspectFit' style='left:{{ stickerCenterX - 100 }}rpx;top:{{ stickerCenterY - 100 }}rpx;transform:rotate({{ rotate }}deg) scale({{ scale }});border:{{ border }};z-index:{{ z_index }};' wx:if='{{ component_type !== "text" }}'
+  />
+  <text class='text' id='sticker' style='left:{{ stickerCenterX - 100 }}rpx;top:{{ stickerCenterY - 100 }}rpx;transform:rotate({{ rotate }}deg) scale({{ scale }});border:{{ border }};z-index:{{ z_index }};' wx:if='{{ component_type === "text" }}'>{{ text }}</text>
+  <image class='remove' src='/assets/remove-icon.png' id='remove' hidden='{{ !selected || hideRemove }}' style='left:{{ removeCenterX - 20 }}rpx;top:{{ removeCenterY - 20 }}rpx;z-index:{{ z_index }};' />
+  <image class='handle' src='/assets/rotate-icon.png' id='handle' hidden='{{ !selected }}' style='left:{{ handleCenterX - 20 }}rpx;top:{{ handleCenterY - 20 }}rpx;z-index:{{ z_index }};' />
+</view>

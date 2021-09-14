@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "journalBook": "/components/journalBook/journalBook"
+  },
+  "disableScroll": true
+}

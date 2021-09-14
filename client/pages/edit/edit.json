@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "sticker": "/components/sticker/sticker",
+    "inputBox": "/components/inputBox/inputBox"
+  },
+  "disableScroll": true
+}

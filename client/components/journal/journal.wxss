@@ -1,0 +1,62 @@
+.journal-container {
+  margin-bottom: 40rpx;
+  width: 330rpx;
+  height: 490rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  box-shadow: 3rpx 3rpx 12rpx #5b5a5b;
+}
+
+.journal-preview {
+  display: block;
+  width: 330rpx;
+  height: 490rpx;
+}
+
+.shade {
+  position: relative;
+  top: -130rpx;
+  opacity: 0.8;
+  background-color: #ebebeb;
+  background-size: 100%;
+  width: 330rpx;
+  height: 92rpx;
+}
+
+.journal-info {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  right: -15rpx;
+  bottom: -9rpx;
+}
+
+.title {
+  font-size: 28rpx;
+  color: #343435;
+}
+
+.date {
+  font-size: 24rpx;
+  color: #898890;
+}
+
+.settings-container {
+  position: relative;
+  top: -48rpx;
+  right: -265rpx;
+  height: 50rpx;
+  width: 50rpx;
+}
+
+.settings {
+  position: relative;
+  top: 2rpx;
+  left: 8rpx;
+  height: 34rpx;
+  width: 34rpx;
+}
+
+.settings:active {
+  transform: scale(0.85);
+}
